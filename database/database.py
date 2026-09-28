@@ -2,11 +2,11 @@ import sqlite3
 from pathlib import Path
 
 class Database:
-    def __init__(self, database_path: str | Path = "remind.db")
+    def __init__(self, database_path: str | Path = "remind.db"):
         self.database_path = Path(database_path)
         self._connection: sqlite3.Connection | None = None
 
-    def connect(self) -> sqlite3.Connection
+    def connect(self) -> sqlite3.Connection:
         if self.database_path == Path(":memory:"):
             if self._connection is None:
                 self._connection = sqlite3.connect(self.database_path)
