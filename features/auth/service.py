@@ -24,3 +24,12 @@ class UserAuthService:
             raise ValueError("Invalid username or password.")
         self.current_user = saved_user
         return saved_user
+
+    def logout(self) -> None:
+        self.current_user = None
+
+    def _validate_password(self, password: str, confirmation: str) -> None:
+        if len(password) < 8:
+            raise ValueError("Password too short(Minimum of 8 characters).")
+        if password != confirmation:
+            raise ValueError("Passwords do not match.")
