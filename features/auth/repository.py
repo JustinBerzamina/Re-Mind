@@ -1,6 +1,7 @@
 import sqlite3
 
 from database.database import Database
+
 from .models import User
 
 
