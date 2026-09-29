@@ -1,0 +1,20 @@
+from dataclasses import dataclass
+
+
+@dataclass
+class User:
+    username: str
+    password_hash: str
+    id: int | None = None
+
+    def __post_init__(self) -> None:
+        self.id = self.id
+        self.username = self.username.strip()
+        self.password_hash = self.password_hash.strip()
+
+        if len(self.username) < 4:
+            raise ValueError("Userame is too short (Minimum of 4 characters).")
+        if len(self.username) > 16:
+            raise ValueError("Username is too long (Maximum of 16 characters).")
+        if not self.password_hash:
+            raise ValueError("Password cannot be empty.")

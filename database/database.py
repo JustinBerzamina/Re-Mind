@@ -1,6 +1,7 @@
 import sqlite3
 from pathlib import Path
 
+
 class Database:
     def __init__(self, database_path: str | Path = "remind.db"):
         self.database_path = Path(database_path)
@@ -41,4 +42,3 @@ class Database:
                 );
                 """
             )
-
