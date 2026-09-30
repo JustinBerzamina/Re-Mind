@@ -30,6 +30,6 @@ class UserAuthService:
 
     def _validate_password(self, password: str, confirmation: str) -> None:
         if len(password) < 8:
-            raise ValueError("Password too short(Minimum of 8 characters).")
+            raise ValueError("Password too short (Minimum of 8 characters).")
         if password != confirmation:
             raise ValueError("Passwords do not match.")
