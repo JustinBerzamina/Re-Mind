@@ -1,5 +1,3 @@
-from pathlib import Path
-
 from PyQt6.QtWidgets import (
     QDialog,
     QFormLayout,
@@ -18,10 +16,9 @@ class UserAuthView(QDialog):
         super().__init__()
         self.setObjectName("userauthView")
         self.service = service
-        self.SetWindowTitle("Re:Mind Login Page")
-        self.SetMinimumWidth(380)
+        self.setWindowTitle("Re:Mind Login Page")
+        self.setMinimumWidth(380)
         self.build_ui()
-        self.setStyleSheet(Path(__file__).with_name("style.qss").read_text())
 
     def build_ui(self):
         layout = QVBoxLayout(self)
@@ -34,8 +31,8 @@ class UserAuthView(QDialog):
         layout.addWidget(heading)
 
         self.pages = QStackedWidget()
-        self.pages.addWidget(self.build_login_page())
-        self.pages.addWidget(self.build_registration_page())
+        self.pages.addWidget(self._build_login_page())
+        self.pages.addWidget(self._build_registration_page())
         layout.addWidget(self.pages)
 
     def _build_login_page(self) -> QWidget:
@@ -64,7 +61,7 @@ class UserAuthView(QDialog):
         layout.addWidget(register_button)
         return page
 
-    def _build_regitration_page(self) -> QWidget:
+    def _build_registration_page(self) -> QWidget:
         page = QWidget()
         layout = QVBoxLayout(page)
         layout.addWidget(QLabel("Create an account to use the application."))
@@ -83,6 +80,11 @@ class UserAuthView(QDialog):
         form.addRow("Confirm Password", self.confirm_password)
         layout.addLayout(form)
 
+        register_button = QPushButton("Register")
+        register_button.setObjectName("primaryButton")
+        register_button.clicked.connect(self.register)
+        layout.addWidget(register_button)
+
         back_button = QPushButton("Back to Login")
         back_button.setObjectName("secondaryButton")
         back_button.clicked.connect(lambda: self.pages.setCurrentIndex(0))
@@ -91,7 +93,7 @@ class UserAuthView(QDialog):
 
     def register(self):
         try:
-            self.service.register(
+            self.service.register_user(
                 self.register_username.text(),
                 self.register_password.text(),
                 self.confirm_password.text(),
@@ -109,3 +111,13 @@ class UserAuthView(QDialog):
         self.register_password.clear()
         self.confirm_password.clear()
         self.pages.setCurrentIndex(0)
+
+    def login(self):
+        try:
+            self.service.authenticate_user(
+                self.login_username.text(), self.login_password.text()
+            )
+        except ValueError as error:
+            QMessageBox.warning(self, "Login Failed", str(error))
+            return
+        self.accept()
