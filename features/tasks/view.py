@@ -124,19 +124,6 @@ class TaskView(QWidget):
             item = QListWidgetItem(text)
             item.setData(Qt.ItemDataRole.UserRole, task.id)
 
-             # Priority color coding
-            if task.priority == "high":
-                item.setBackground(QBrush(QColor("#fee2e2")))
-                item.setForeground(QBrush(QColor("#991b1b")))
-
-            elif task.priority == "medium":
-                item.setBackground(QBrush(QColor("#fef3c7")))
-                item.setForeground(QBrush(QColor("#92400e")))
-
-            elif task.priority == "low":
-                item.setBackground(QBrush(QColor("#dcfce7")))
-                item.setForeground(QBrush(QColor("#166534")))
-
             self.task_list.addItem(item)
 
     def add_task(self):
@@ -274,8 +261,8 @@ class TaskView(QWidget):
 
         return (
             f"{task.title}\n"
-            f"{priority} Priority  •  {deadline}  •  "
-            f"{status}  •  {urgency.capitalize()}"
+            f"{priority} priority | {deadline} | "
+            f"{status} | {urgency.capitalize()}"
         )
 
 
