@@ -9,7 +9,7 @@ class User:
 
     def __post_init__(self) -> None:
         self.username = self.username.strip()
-        self.password_hash = self.password_hash.strip()
+        self.password = self.password.strip()
 
         if len(self.username) < 4:
             raise ValueError("Username is too short (Minimum of 4 characters).")

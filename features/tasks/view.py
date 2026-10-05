@@ -18,7 +18,6 @@ from PyQt6.QtWidgets import (
     QWidget,
     QCheckBox,
 )
-from PyQt6.QtGui import QBrush, QColor
 
 from features.tasks.models import Task
 from features.tasks.service import TaskService
