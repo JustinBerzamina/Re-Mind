@@ -237,8 +237,6 @@ The main task-management screen allows the logged-in user to view tasks, choose 
 
 The authentication screen allows a user to log in or create a new account.
 
-> Add the corresponding screenshots to a `screenshots` folder before submission.
-
 ## Testing
 
 The system can be tested using the following cases:
