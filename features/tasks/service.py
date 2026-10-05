@@ -66,12 +66,16 @@ class TaskService:
         if task is None:
             raise ValueError("Task not found.")
 
-        task.title = self._validate_title(title)
+        title = self._validate_title(title)
+        priority = self._validate_priority(priority)
+
+        if deadline != task.deadline:
+            self._validate_deadline(deadline)
+
+        task.title = title
         task.description = description.strip()
         task.deadline = deadline
-        task.priority = self._validate_priority(priority)
-
-        self._validate_deadline(deadline)
+        task.priority = priority
 
         if not self.repository.update(task):
             raise RuntimeError("Failed to update task.")
