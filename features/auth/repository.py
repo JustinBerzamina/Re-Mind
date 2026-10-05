@@ -9,12 +9,12 @@ class UserAuthRepository:
     def __init__(self, database: Database):
         self.database = database
 
-    def add(self, user: User, password_hash: str) -> User:
+    def add(self, user: User, password: str) -> User:
         try:
             with self.database.connect() as connection:
                 cursor = connection.execute(
                     "INSERT INTO users (username, password) VALUES (?, ?)",
-                    (user.username, password_hash),
+                    (user.username, password),
                 )
                 user.id = cursor.lastrowid
         except sqlite3.IntegrityError as error:
@@ -29,5 +29,5 @@ class UserAuthRepository:
             ).fetchone()
         if row is None:
             return None
-        user = User(id=row[0], username=row[1], password_hash=row[2])
+        user = User(id=row[0], username=row[1], password=row[2])
         return user, row[2]
