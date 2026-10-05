@@ -15,10 +15,10 @@ class Database:
                 self._connection.execute("PRAGMA foreign_keys = ON;")
             return self._connection
 
-        conn = sqlite3.connect(self.database_path)
-        conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA foreign_keys = ON;")
-        return conn
+        connection = sqlite3.connect(self.database_path)
+        connection.row_factory = sqlite3.Row
+        connection.execute("PRAGMA foreign_keys = ON;")
+        return connection
 
     def create_tables(self) -> None:
         with self.connect() as connection:
@@ -34,11 +34,23 @@ class Database:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER NOT NULL,
                     title TEXT NOT NULL,
-                    priority INTEGER NOT NULL DEFAULT 1,
+                    description TEXT NOT NULL DEFAULT '',
                     deadline TEXT,
-                    reminder TEXT,
-                    completed INTEGER NOT NULL DEFAULT 0,
-                    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+                    priority TEXT NOT NULL DEFAULT 'medium'
+                        CHECK (priority IN ('low', 'medium', 'high')),
+                    is_completed INTEGER NOT NULL DEFAULT 0
+                        CHECK (is_completed IN (0, 1)),
+                    FOREIGN KEY (user_id)
+                        REFERENCES users (id)
+                        ON DELETE CASCADE
                 );
+
+                CREATE INDEX IF NOT EXISTS idx_tasks_user_id
+                    ON tasks (user_id);
                 """
             )
+
+    def close(self) -> None:
+        if self._connection is not None:
+            self._connection.close()
+            self._connection = None

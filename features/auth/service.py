@@ -11,7 +11,7 @@ class UserAuthService:
 
     def register_user(self, username: str, password: str, confirmation: str):
         user = User(username=username, password_hash=password)
-        # self._validate_password(password, confirmation)
+        self._validate_password(password, confirmation)
         return self.repository.add(user, password)
 
     def authenticate_user(self, username: str, password: str) -> User:

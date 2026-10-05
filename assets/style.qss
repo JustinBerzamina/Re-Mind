@@ -1,54 +1,183 @@
-/* Base resets to isolate system dark/light themes */
-QDialog, QWidget#mainContent {
+/* =========================================================
+   Re:Mind - Global Application Style
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   Base
+   --------------------------------------------------------- */
+
+QDialog,
+QWidget#mainContent,
+QWidget#taskView {
     background-color: #f8fafc;
     color: #1e293b;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     font-size: 13px;
 }
 
-/* Headings and labels */
+
+/* ---------------------------------------------------------
+   Labels and Headings
+   --------------------------------------------------------- */
+
 QLabel {
     color: #334155;
     background-color: transparent;
 }
 
-#heading, #appTitle {
+QLabel#heading,
+QLabel#appTitle {
     color: #0f172a;
     font-size: 20px;
     font-weight: 700;
 }
 
-#appSubtitle {
+QLabel#appSubtitle {
     color: #64748b;
     font-size: 13px;
 }
 
-/* Form inputs */
-QLineEdit {
+
+/* ---------------------------------------------------------
+   Application Header
+   --------------------------------------------------------- */
+
+QWidget#appHeader {
+    background-color: #f8fafc;
+    border: none;
+}
+
+
+/* ---------------------------------------------------------
+   Text Inputs
+   --------------------------------------------------------- */
+
+QLineEdit,
+QTextEdit,
+QDateTimeEdit {
     background-color: #ffffff;
     color: #0f172a;
+
     border: 1px solid #cbd5e1;
     border-radius: 6px;
+
     padding: 8px 12px;
+
     selection-background-color: #2563eb;
     selection-color: #ffffff;
 }
 
-QLineEdit:focus {
+QLineEdit:focus,
+QTextEdit:focus,
+QDateTimeEdit:focus {
     border: 2px solid #2563eb;
 }
 
-QLineEdit::placeholder {
+QLineEdit:disabled,
+QTextEdit:disabled,
+QDateTimeEdit:disabled {
+    background-color: #f1f5f9;
     color: #94a3b8;
+    border-color: #e2e8f0;
 }
 
-/* Action buttons */
+
+/* ---------------------------------------------------------
+   Combo Boxes
+   --------------------------------------------------------- */
+
+QComboBox {
+    background-color: #ffffff;
+    color: #0f172a;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+
+    padding: 7px 10px;
+    min-height: 20px;
+
+    selection-background-color: #2563eb;
+    selection-color: #ffffff;
+}
+
+QComboBox:hover {
+    border-color: #94a3b8;
+}
+
+QComboBox:focus {
+    border: 2px solid #2563eb;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 28px;
+}
+
+QComboBox::down-arrow {
+    width: 10px;
+    height: 10px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    color: #0f172a;
+
+    border: 1px solid #cbd5e1;
+
+    selection-background-color: #2563eb;
+    selection-color: #ffffff;
+
+    outline: none;
+    padding: 4px;
+}
+
+
+/* ---------------------------------------------------------
+   Check Boxes
+   --------------------------------------------------------- */
+
+QCheckBox {
+    background-color: transparent;
+    color: #334155;
+    spacing: 8px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: #ffffff;
+    border: 1px solid #94a3b8;
+    border-radius: 3px;
+}
+
+QCheckBox::indicator:unchecked:hover {
+    border: 1px solid #2563eb;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #2563eb;
+    border: 1px solid #2563eb;
+    border-radius: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   Primary Buttons
+   --------------------------------------------------------- */
+
 QPushButton#primaryButton {
     background-color: #2563eb;
     color: #ffffff;
+
     border: none;
     border-radius: 6px;
+
     padding: 8px 16px;
+
     font-weight: 600;
 }
 
@@ -56,25 +185,93 @@ QPushButton#primaryButton:hover {
     background-color: #1d4ed8;
 }
 
+QPushButton#primaryButton:pressed {
+    background-color: #1e40af;
+}
+
+QPushButton#primaryButton:disabled {
+    background-color: #93c5fd;
+    color: #eff6ff;
+}
+
+
+/* ---------------------------------------------------------
+   Secondary Buttons
+   --------------------------------------------------------- */
+
 QPushButton#secondaryButton {
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
     color: #2563eb;
+
     border: 1px solid #cbd5e1;
     border-radius: 6px;
+
     padding: 8px 16px;
+
     font-weight: 500;
 }
 
 QPushButton#secondaryButton:hover {
     background-color: #e2e8f0;
+    border-color: #94a3b8;
 }
+
+QPushButton#secondaryButton:pressed {
+    background-color: #cbd5e1;
+}
+
+QPushButton#secondaryButton:disabled {
+    background-color: #f1f5f9;
+    color: #94a3b8;
+    border-color: #e2e8f0;
+}
+
+
+/* ---------------------------------------------------------
+   Delete / Danger Button
+   --------------------------------------------------------- */
+
+QPushButton#dangerButton {
+    background-color: #ffffff;
+    color: #dc2626;
+
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+
+    padding: 8px 16px;
+
+    font-weight: 500;
+}
+
+QPushButton#dangerButton:hover {
+    background-color: #fef2f2;
+    border-color: #f87171;
+}
+
+QPushButton#dangerButton:pressed {
+    background-color: #fee2e2;
+}
+
+QPushButton#dangerButton:disabled {
+    background-color: #f8fafc;
+    color: #cbd5e1;
+    border-color: #e2e8f0;
+}
+
+
+/* ---------------------------------------------------------
+   Logout Button
+   --------------------------------------------------------- */
 
 QPushButton#logoutButton {
     background-color: #ef4444;
     color: #ffffff;
+
     border: none;
     border-radius: 6px;
+
     padding: 6px 14px;
+
     font-weight: 600;
 }
 
@@ -82,12 +279,227 @@ QPushButton#logoutButton:hover {
     background-color: #dc2626;
 }
 
-/* Dialog boxes / alerts */
+QPushButton#logoutButton:pressed {
+    background-color: #b91c1c;
+}
+
+
+/* ---------------------------------------------------------
+   Task View
+   --------------------------------------------------------- */
+
+QWidget#taskView {
+    background-color: transparent;
+}
+
+QWidget#taskView QComboBox {
+    min-width: 120px;
+}
+
+
+/* ---------------------------------------------------------
+   Task List
+   --------------------------------------------------------- */
+
+QWidget#taskView QListWidget {
+    background-color: #ffffff;
+    color: #1e293b;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+
+    padding: 6px;
+
+    outline: none;
+}
+
+QWidget#taskView QListWidget::item {
+    background-color: #ffffff;
+    color: #1e293b;
+
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+
+    padding: 10px 8px;
+    margin: 1px 0;
+}
+
+QWidget#taskView QListWidget::item:hover {
+    background-color: #f1f5f9;
+}
+
+QWidget#taskView QListWidget::item:selected {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+}
+
+
+/* ---------------------------------------------------------
+   Task Dialog
+   --------------------------------------------------------- */
+
+QDialog#taskDialog {
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+QDialog#taskDialog QLabel {
+    color: #334155;
+    background-color: transparent;
+}
+
+QDialog#taskDialog QCheckBox {
+    color: #334155;
+    background-color: transparent;
+}
+
+QDialog#taskDialog QLineEdit,
+QDialog#taskDialog QTextEdit,
+QDialog#taskDialog QDateTimeEdit,
+QDialog#taskDialog QComboBox {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+
+/* ---------------------------------------------------------
+   Date / Time Editor
+   --------------------------------------------------------- */
+
+QDateTimeEdit {
+    min-height: 20px;
+}
+
+QDateTimeEdit::drop-down {
+    border: none;
+    width: 28px;
+}
+
+
+/* ---------------------------------------------------------
+   Calendar Popup
+   --------------------------------------------------------- */
+
+QCalendarWidget {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+QCalendarWidget QWidget {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+QCalendarWidget QToolButton {
+    background-color: transparent;
+    color: #0f172a;
+
+    border: none;
+    border-radius: 4px;
+
+    padding: 5px;
+}
+
+QCalendarWidget QToolButton:hover {
+    background-color: #e2e8f0;
+}
+
+QCalendarWidget QAbstractItemView {
+    background-color: #ffffff;
+    color: #0f172a;
+
+    selection-background-color: #2563eb;
+    selection-color: #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   Scroll Bars
+   --------------------------------------------------------- */
+
+QScrollBar:vertical {
+    background-color: #f1f5f9;
+    width: 10px;
+    margin: 0;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #cbd5e1;
+    min-height: 25px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #94a3b8;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar:horizontal {
+    background-color: #f1f5f9;
+    height: 10px;
+    margin: 0;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #cbd5e1;
+    min-width: 25px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #94a3b8;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0;
+}
+
+
+/* ---------------------------------------------------------
+   Message Boxes
+   --------------------------------------------------------- */
+
 QMessageBox {
     background-color: #ffffff;
     color: #0f172a;
 }
 
 QMessageBox QLabel {
+    background-color: transparent;
     color: #0f172a;
+}
+
+QMessageBox QPushButton {
+    background-color: #f8fafc;
+    color: #1e293b;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+
+    min-width: 70px;
+    padding: 6px 12px;
+}
+
+QMessageBox QPushButton:hover {
+    background-color: #e2e8f0;
+}
+
+
+/* ---------------------------------------------------------
+   Tooltips
+   --------------------------------------------------------- */
+
+QToolTip {
+    background-color: #0f172a;
+    color: #ffffff;
+
+    border: 1px solid #334155;
+    border-radius: 4px;
+
+    padding: 5px;
 }
