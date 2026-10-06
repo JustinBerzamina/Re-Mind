@@ -268,6 +268,3 @@ The system can be tested using the following cases:
 **Name:** Justin Berzamina  
 **Section:** 3581
 
-## GitHub Repository
-
-https://github.com/JustinBerzamina/Re-Mind
