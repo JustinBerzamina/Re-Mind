@@ -34,7 +34,7 @@ class MainWindow(QDialog):
 
         self.setObjectName("mainContent")
         self.setWindowTitle("Re:Mind - Task Manager")
-        self.resize(900, 650)
+        self.resize(1100, 680)
 
         self.build_ui()
 

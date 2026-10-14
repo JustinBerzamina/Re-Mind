@@ -503,3 +503,38 @@ QToolTip {
 
     padding: 5px;
 }
+
+/* Switchable task tables */
+QWidget#taskView QTabWidget::pane {
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #ffffff;
+}
+QWidget#taskView QTabBar::tab {
+    padding: 10px 16px;
+    background: #e2e8f0;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+QWidget#taskView QTabBar::tab:selected {
+    background: #ffffff;
+    color: #1d4ed8;
+    font-weight: 600;
+}
+QWidget#taskView QTableWidget {
+    background: #ffffff;
+    alternate-background-color: #f8fafc;
+    color: #1e293b;
+    gridline-color: #e2e8f0;
+    border: none;
+    selection-background-color: #dbeafe;
+    selection-color: #1e3a8a;
+}
+QWidget#taskView QHeaderView::section {
+    background: #f1f5f9;
+    color: #334155;
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 8px;
+    font-weight: 600;
+}
